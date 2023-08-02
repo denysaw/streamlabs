@@ -18,7 +18,7 @@ class SubscriberFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->userName(),
             'tier' => fake()->numberBetween(1, 3),
             'created_at' => fake()->dateTimeBetween('-3 months'),
         ];

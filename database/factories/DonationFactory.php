@@ -18,6 +18,7 @@ class DonationFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => fake()->userName(),
             'amount' => fake()->numberBetween(5, 200),
             'currency' => fake()->randomElement(['USD', 'CAD', 'EUR']),
             'message' => fake()->text(),
