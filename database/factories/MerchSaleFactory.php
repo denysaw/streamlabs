@@ -19,7 +19,7 @@ class MerchSaleFactory extends Factory
     {
         return [
             'name' => fake()->userName(),
-            'item' => fake()->sentence(2),
+            'item' => fake()->colorName(),
             'quantity' => fake()->numberBetween(1, 10),
             'price' => fake()->randomFloat(null, 10, 200),
             'created_at' => fake()->dateTimeBetween('-3 months'),

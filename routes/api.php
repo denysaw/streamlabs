@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OAuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::get('/user/events', [UserController::class, 'events']);
+    Route::get('/user/stats', [UserController::class, 'stats']);
 });
 
-Route::middleware('oauth')->group(function () {
+Route::middleware('oauth.providers')->group(function () {
     Route::get('/login/{provider}', [OAuthController::class, 'redirectToProvider']);
     Route::get('/login/{provider}/callback', [OAuthController::class, 'handleProviderCallback']);
 });

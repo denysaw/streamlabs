@@ -18,7 +18,7 @@ return new class extends Migration
             UNION
             SELECT 'd' || id AS id, name || ' donated ' || amount || ' ' || currency || ' to you! "' || message || '"' AS message, user_id, read, created_at FROM donations
             UNION
-            SELECT 'p' || id AS id, name || ' bought ' || item || ' from you for ' || round(price::numeric, 2) || ' USD!' AS message, user_id, read, created_at FROM merch_sales
+            SELECT 'p' || id AS id, name || ' bought ' || item || ' from you for ' || ROUND((price * quantity)::numeric, 2) || ' USD!' AS message, user_id, read, created_at FROM merch_sales
         EOT);
     }
 

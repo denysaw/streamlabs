@@ -13,14 +13,14 @@ class OAuthController extends Controller
 
 
     /**
-     * Redirect user to a Provider auth page
+     * Returns Provider auth page url
      *
      * @param $provider
-     * @return RedirectResponse
+     * @return JsonResponse
      */
-    public function redirectToProvider($provider): RedirectResponse
+    public function redirectToProvider($provider): JsonResponse
     {
-        return Socialite::driver($provider)->stateless()->redirect();
+        return response()->json(['url' => Socialite::driver($provider)->stateless()->redirect()->getTargetUrl()]);
     }
 
     /**
@@ -58,7 +58,7 @@ class OAuthController extends Controller
             ]
         );
 
-        $token = $user->createToken('Streamlabs')->plainTextToken;
-        return response()->json($user, 200, ['Access-Token' => $token]);
+        $user->token = $user->createToken('Streamlabs')->plainTextToken;
+        return response()->json($user);
     }
 }

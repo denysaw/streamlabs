@@ -55,4 +55,44 @@ class User extends Authenticatable
     {
         return $this->hasMany(OAuthProvider::class, 'user_id', 'id');
     }
+
+    /**
+     * Populates user events
+     *
+     * @return HasMany
+     */
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class, 'user_id', 'id');
+    }
+
+    /**
+     * Populates user followers
+     *
+     * @return HasMany
+     */
+    public function followers(): HasMany
+    {
+        return $this->hasMany(Follower::class, 'user_id', 'id');
+    }
+
+    /**
+     * Populates user subscribers
+     *
+     * @return HasMany
+     */
+    public function subscribers(): HasMany
+    {
+        return $this->hasMany(Subscriber::class, 'user_id', 'id');
+    }
+
+    /**
+     * Populates user sales
+     *
+     * @return HasMany
+     */
+    public function sales(): HasMany
+    {
+        return $this->hasMany(MerchSale::class, 'user_id', 'id');
+    }
 }
