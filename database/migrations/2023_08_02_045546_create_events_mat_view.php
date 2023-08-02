@@ -20,6 +20,8 @@ return new class extends Migration
             UNION
             SELECT 'p' || id AS id, name || ' bought ' || item || ' from you for ' || ROUND((price * quantity)::numeric, 2) || ' USD!' AS message, user_id, read, created_at FROM merch_sales
         EOT);
+
+        DB::statement('CREATE UNIQUE INDEX events_unique_index ON events (id, message, user_id)');
     }
 
     /**

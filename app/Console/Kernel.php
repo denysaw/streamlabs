@@ -13,10 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // TODO: Make 'events:refresh' artisan command instead of direct querying
-        $schedule->call(function () {
-            DB::statement('REFRESH MATERIALIZED VIEW CONCURRENTLY events');
-        })->hourly();
+        $schedule->command('events:refresh')->hourly();
     }
 
     /**
