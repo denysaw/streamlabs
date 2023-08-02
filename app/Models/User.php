@@ -46,9 +46,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
-    public $incrementing = false;
-
     /**
      * Populates user's OAuth providers
      *
