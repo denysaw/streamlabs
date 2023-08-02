@@ -2,6 +2,9 @@
 
 Hey guys! Test assignment was great ) I really enjoyed solving it :)
 Though given time surely not enough to build it ideally )
+I was unable to implement a front-end part in time.
+
+Here's the demo video: https://drive.google.com/file/d/14BDxcFmNNnLAQGFQ62Vsj64ww_RONnM1/view?usp=sharing
 
 I wasn't sure if Followers/Subscribers/Donators/Buyers should be a real User entities from the same `users` table (as it was mentioned that each or another table should have only `name` field and not the foreign `user_id`), so I created just an abstract tables/entities with a "connection" only to mine seeded user.
 
